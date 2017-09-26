@@ -24,6 +24,8 @@ public class BookAdapter extends ArrayAdapter<Book> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View bookItemView = convertView;
+        //Check to see if there is an existing listItem view that we can re-use
+        //otherwise inflate a new one
         if (bookItemView == null) {
             bookItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.book_list, parent, false);
