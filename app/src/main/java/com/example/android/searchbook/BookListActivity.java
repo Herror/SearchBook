@@ -18,7 +18,7 @@ public class BookListActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = BookListActivity.class.getName();
 
-    private static final String GOOGLE_BOOK_URL = "https://www.googleapis.com/books/v1/volumes?q=game+of+thrones";
+    private static final String GOOGLE_BOOK_URL = "https://www.googleapis.com/books/v1/volumes?q=";
 
     //create an instance of the BookAdapter so I can access and modify it
     private BookAdapter mAdapter;
@@ -27,6 +27,10 @@ public class BookListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
+
+        //get the text the user typed
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(BookActivity.EXTRA_MESSAGE);
 
         //find the reference of the gridView in the layout
         GridView bookGridView = (GridView) findViewById(R.id.list);
@@ -37,7 +41,7 @@ public class BookListActivity extends AppCompatActivity {
         bookGridView.setAdapter(mAdapter);
 
         BookAsyncTask bookAsyncTask = new BookAsyncTask();
-        bookAsyncTask.execute(GOOGLE_BOOK_URL);
+        bookAsyncTask.execute(GOOGLE_BOOK_URL + message);
 
         /**
          * Create an Intent so that when the user clicks on any of the displayed books
