@@ -28,7 +28,7 @@ public class BookListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
 
-        //get the text the user typed
+        //get the text the user typed into the editText
         Intent intent = getIntent();
         String message = intent.getStringExtra(BookActivity.EXTRA_MESSAGE);
 
@@ -41,6 +41,7 @@ public class BookListActivity extends AppCompatActivity {
         bookGridView.setAdapter(mAdapter);
 
         BookAsyncTask bookAsyncTask = new BookAsyncTask();
+        //execute the task and add the search message
         bookAsyncTask.execute(GOOGLE_BOOK_URL + message);
 
         /**

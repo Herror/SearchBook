@@ -33,14 +33,10 @@ public class Book {
     }
 
     //Just for tests - remove after
-    public Book(String title, String author){
+    public Book(String title, String author, String url){
         mTitle = title;
         mAuthor = author;
-    }
-
-    //Again tests
-    public Book(String title){
-        mTitle = title;
+        mUrl = url;
     }
 
     //return the image URL

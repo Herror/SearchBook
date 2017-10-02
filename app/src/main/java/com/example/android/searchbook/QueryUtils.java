@@ -156,9 +156,11 @@ public final class QueryUtils {
                 //get the authors
                 JSONArray authorsArray = volumeInfo.getJSONArray("authors");
                 String authors = authorsArray.toString();
+                //get the preview link
+                String previewLink = volumeInfo.getString("previewLink");
 
                 //create a new object with the title, authors and the image from the JSON response
-                Book book = new Book(title, authors);
+                Book book = new Book(title, authors, previewLink);
 
                 //add it to the list of books
                 books.add(book);
