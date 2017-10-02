@@ -15,22 +15,32 @@ public class Book {
     //Author of the book
     private String mAuthor;
 
+    //Url of the preview of the book
+
+    private String mUrl;
+
     /**
      * @param coverImage - Cover image of the book from the JSON
      * @param title - The title of the book
      * @param author - The author of the book
      */
 
-    public Book(int coverImage, String title, String author){
+    public Book(int coverImage, String title, String author, String url){
         mCoverImage = coverImage;
         mTitle = title;
         mAuthor = author;
+        mUrl = url;
     }
 
     //Just for tests - remove after
     public Book(String title, String author){
         mTitle = title;
         mAuthor = author;
+    }
+
+    //Again tests
+    public Book(String title){
+        mTitle = title;
     }
 
     //return the image URL
@@ -44,6 +54,10 @@ public class Book {
     //return the author of the book
     public String getAuthor(){
         return mAuthor;
+    }
+    //return the preview Url
+    public String getUrl(){
+        return mUrl;
     }
 
 }
