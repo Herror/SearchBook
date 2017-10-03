@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#424242">
 
     <ImageView
         android:id="@+id/book_thumbnail"
@@ -15,16 +16,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceMedium"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
         tools:text="Title"
         android:maxLines="3"
-        android:ellipsize="end"/>
+        android:ellipsize="end"
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/author"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceSmall"
-        tools:text="Author" />
+        android:layout_marginLeft="16dp"
+        tools:text="Author"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textColor="@android:color/white"/>
 
 
 </LinearLayout>

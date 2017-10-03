@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.searchbook.BookActivity">
+    tools:context="com.example.android.searchbook.BookActivity"
+    android:background="#424242">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -17,6 +18,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/search_for_a_book"
             android:inputType="textMultiLine"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+
             />
         <Button
             android:id="@+id/search_button"
