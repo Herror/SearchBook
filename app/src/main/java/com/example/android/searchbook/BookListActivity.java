@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -89,6 +90,9 @@ public class BookListActivity extends AppCompatActivity {
             if (result != null && !result.isEmpty()) {
                 mAdapter.addAll(result);
             }
+
+            ProgressBar spinner = (ProgressBar) findViewById(R.id.loading_spinner);
+            spinner.setVisibility(View.GONE);
         }
     }
 }
