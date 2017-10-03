@@ -42,8 +42,18 @@ public class BookListActivity extends AppCompatActivity {
         bookGridView.setAdapter(mAdapter);
 
         BookAsyncTask bookAsyncTask = new BookAsyncTask();
-        //execute the task and add the search message
-        bookAsyncTask.execute(GOOGLE_BOOK_URL + message);
+        if(message.isEmpty()){
+            //Object for the spinner while loading
+            ProgressBar spinner = (ProgressBar) findViewById(R.id.loading_spinner);
+            spinner.setVisibility(View.GONE);
+            //Object for the empty textView in case, the user didn't typed anything or if there isn't any
+            //internet connection
+            TextView emptyText = (TextView) findViewById(R.id.empty_view);
+            emptyText.setText("Please type the name of a book");
+        }else {
+            //execute the task and add the search message
+            bookAsyncTask.execute(GOOGLE_BOOK_URL + message);
+        }
 
         /**
          * Create an Intent so that when the user clicks on any of the displayed books
@@ -89,8 +99,12 @@ public class BookListActivity extends AppCompatActivity {
 
             if (result != null && !result.isEmpty()) {
                 mAdapter.addAll(result);
+            } else {
+                //if there aren't any results to be displayed - return the below message
+                TextView emptyText = (TextView) findViewById(R.id.empty_view);
+                emptyText.setText("No results found");
             }
-
+            //Object for the spinner while loading
             ProgressBar spinner = (ProgressBar) findViewById(R.id.loading_spinner);
             spinner.setVisibility(View.GONE);
         }
