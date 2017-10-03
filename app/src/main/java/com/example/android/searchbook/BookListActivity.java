@@ -32,6 +32,9 @@ public class BookListActivity extends AppCompatActivity
     //create an instance of the BookAdapter so I can access and modify it
     private BookAdapter mAdapter;
 
+    //reference to the empty message
+    private TextView mEmptyStateTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +86,7 @@ public class BookListActivity extends AppCompatActivity
         //get the text the user typed into the editText
         Intent intent = getIntent();
         String userInput = intent.getStringExtra(BookActivity.EXTRA_MESSAGE);
-        
+
             //create a new loader for the given URL
             return new BookLoader(this, GOOGLE_BOOK_URL + userInput);
     }
@@ -96,15 +99,15 @@ public class BookListActivity extends AppCompatActivity
         Intent intent = getIntent();
         String userInput = intent.getStringExtra(BookActivity.EXTRA_MESSAGE);
 
+        mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
+        
         if (books != null && !books.isEmpty()) {
             mAdapter.addAll(books);
         }else if(userInput.isEmpty()){
-            TextView emptyText = (TextView) findViewById(R.id.empty_view);
-            emptyText.setText("Please type the name of a book");
+            mEmptyStateTextView.setText(R.string.empty_user_imput);
         } else {
             //if there aren't any results to be displayed - return the below message
-            TextView emptyText = (TextView) findViewById(R.id.empty_view);
-            emptyText.setText("No results found");
+            mEmptyStateTextView.setText(R.string.no_results);
         }
         //Object for the spinner while loading
         ProgressBar spinner = (ProgressBar) findViewById(R.id.loading_spinner);
