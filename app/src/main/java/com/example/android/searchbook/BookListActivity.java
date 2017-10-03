@@ -51,7 +51,7 @@ public class BookListActivity extends AppCompatActivity
 
         //initialize the loader
         loaderManager.initLoader(BOOK_LOADER_ID, null, this);
-        
+
 
         /**
          * Create an Intent so that when the user clicks on any of the displayed books
@@ -82,19 +82,10 @@ public class BookListActivity extends AppCompatActivity
 
         //get the text the user typed into the editText
         Intent intent = getIntent();
-        String message = intent.getStringExtra(BookActivity.EXTRA_MESSAGE);
-
-        if(message.isEmpty()){
-            //Object for the spinner while loading
-            ProgressBar spinner = (ProgressBar) findViewById(R.id.loading_spinner);
-            spinner.setVisibility(View.GONE);
-            //Object for the empty textView in case, the user didn't typed anything or if there isn't any
-            //internet connection
-            TextView emptyText = (TextView) findViewById(R.id.empty_view);
-            emptyText.setText("Please type the name of a book");
-        }
+        String userInput = intent.getStringExtra(BookActivity.EXTRA_MESSAGE);
+        
             //create a new loader for the given URL
-            return new BookLoader(this, GOOGLE_BOOK_URL + message);
+            return new BookLoader(this, GOOGLE_BOOK_URL + userInput);
     }
 
     @Override
@@ -102,8 +93,14 @@ public class BookListActivity extends AppCompatActivity
         //clear the adapter from previous book data
         mAdapter.clear();
 
+        Intent intent = getIntent();
+        String userInput = intent.getStringExtra(BookActivity.EXTRA_MESSAGE);
+
         if (books != null && !books.isEmpty()) {
             mAdapter.addAll(books);
+        }else if(userInput.isEmpty()){
+            TextView emptyText = (TextView) findViewById(R.id.empty_view);
+            emptyText.setText("Please type the name of a book");
         } else {
             //if there aren't any results to be displayed - return the below message
             TextView emptyText = (TextView) findViewById(R.id.empty_view);
