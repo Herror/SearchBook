@@ -34,11 +34,6 @@ public class BookAdapter extends ArrayAdapter<Book> {
         //get the position of each item in the ListView
         Book bookPosition = getItem(position);
 
-        //find the ImageView with the ID @book_thumbnail
-        ImageView thumbnailImageView = (ImageView) bookItemView.findViewById(R.id.book_thumbnail);
-        //display the image cover
-        thumbnailImageView.setImageResource(bookPosition.getCoverImage());
-
         //find the TextView with the ID @title
         TextView titleTextView = (TextView) bookItemView.findViewById(R.id.title);
         //set the title of the book from the JSON

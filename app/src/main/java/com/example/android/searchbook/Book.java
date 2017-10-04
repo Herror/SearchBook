@@ -6,9 +6,6 @@ package com.example.android.searchbook;
 
 public class Book {
 
-    //cover image of the book
-    private int mCoverImage;
-
     //title of the book
     private String mTitle;
 
@@ -16,33 +13,19 @@ public class Book {
     private String mAuthor;
 
     //Url of the preview of the book
-
     private String mUrl;
 
     /**
-     * @param coverImage - Cover image of the book from the JSON
      * @param title - The title of the book
      * @param author - The author of the book
+     * @param url - The url for the sample book
      */
-
-    public Book(int coverImage, String title, String author, String url){
-        mCoverImage = coverImage;
-        mTitle = title;
-        mAuthor = author;
-        mUrl = url;
-    }
-
-    //Just for tests - remove after
     public Book(String title, String author, String url){
         mTitle = title;
         mAuthor = author;
         mUrl = url;
     }
 
-    //return the image URL
-    public int getCoverImage(){
-        return mCoverImage;
-    }
     //return the title of the book
     public String getTitle(){
         return mTitle;

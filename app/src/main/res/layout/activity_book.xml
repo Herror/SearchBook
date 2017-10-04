@@ -7,10 +7,22 @@
     tools:context="com.example.android.searchbook.BookActivity"
     android:background="#424242">
 
-    <LinearLayout
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_above="@+id/search_box"
+        android:layout_centerHorizontal="true"
+        android:textSize="64dp"
+        android:layout_marginBottom="16dp"
+        android:textColor="#ff5722"
+        android:text="SearchBook"/>
+
+    <LinearLayout
+        android:id="@+id/search_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/book_search"
@@ -19,7 +31,7 @@
             android:hint="@string/search_for_a_book"
             android:inputType="textMultiLine"
             android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
+            android:textColorHint="#ff5722"
 
             />
         <Button
