@@ -1,8 +1,11 @@
 package com.example.android.searchbook;
 
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -35,11 +38,31 @@ public class BookListActivity extends AppCompatActivity
     //reference to the empty message
     private TextView mEmptyStateTextView;
 
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
 
+        if(isNetworkAvailable() == true){
+            //get a reference to the LoaderManager, in order to interact with loaders
+            LoaderManager loaderManager = getLoaderManager();
+
+            //initialize the loader
+            loaderManager.initLoader(BOOK_LOADER_ID, null, this);
+        } else {
+            ProgressBar loadingSpinner = (ProgressBar) findViewById(R.id.loading_spinner);
+            loadingSpinner.setVisibility(View.GONE);
+            mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
+            mEmptyStateTextView.setText("No internet connection");
+        }
 
         //find the reference of the ListView in the layout
         ListView bookGridView = (ListView) findViewById(R.id.list);
@@ -48,12 +71,6 @@ public class BookListActivity extends AppCompatActivity
 
         //set the adapter on the gridView so it can be populated
         bookGridView.setAdapter(mAdapter);
-
-        //get a reference to the LoaderManager, in order to interact with loaders
-        LoaderManager loaderManager = getLoaderManager();
-
-        //initialize the loader
-        loaderManager.initLoader(BOOK_LOADER_ID, null, this);
 
 
         /**
@@ -100,7 +117,7 @@ public class BookListActivity extends AppCompatActivity
         String userInput = intent.getStringExtra(BookActivity.EXTRA_MESSAGE);
 
         mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
-        
+
         if (books != null && !books.isEmpty()) {
             mAdapter.addAll(books);
         }else if(userInput.isEmpty()){

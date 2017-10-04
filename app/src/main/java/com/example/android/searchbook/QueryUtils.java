@@ -144,9 +144,10 @@ public final class QueryUtils {
         try {
             //extract the root book object
             JSONObject root = new JSONObject(bookJSON);
+
+            JSONArray itemsArray = root.getJSONArray("items");
             //extract the items array from inside the root JSONObject
-            for(int i = 0; i < root.length(); i++) {
-                JSONArray itemsArray = root.getJSONArray("items");
+            for(int i = 0; i < itemsArray.length(); i++) {
                 //start adding the books
                 JSONObject firstBook = itemsArray.getJSONObject(i);
                 //get the volumeInfo of the book
