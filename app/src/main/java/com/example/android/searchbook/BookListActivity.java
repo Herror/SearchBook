@@ -121,7 +121,7 @@ public class BookListActivity extends AppCompatActivity
         if (books != null && !books.isEmpty()) {
             mAdapter.addAll(books);
         }else if(userInput.isEmpty()){
-            mEmptyStateTextView.setText(R.string.empty_user_imput);
+            mEmptyStateTextView.setText(R.string.empty_user_input);
         } else {
             //if there aren't any results to be displayed - return the below message
             mEmptyStateTextView.setText(R.string.no_results);

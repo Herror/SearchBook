@@ -5,11 +5,12 @@
     android:layout_height="match_parent"
     android:background="#424242">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/book_info"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_toLeftOf="@+id/page_count">
 
     <TextView
         android:id="@+id/title"
@@ -22,7 +23,7 @@
         tools:text="Title"
         android:maxLines="3"
         android:ellipsize="end"
-        android:textColor="#ff5722"/>
+        android:textColor="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/author"
@@ -31,15 +32,18 @@
         android:textAppearance="?android:textAppearanceSmall"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="8dp"
+        android:layout_below="@+id/title"
         tools:text="Author"
         android:maxLines="2"
         android:ellipsize="end"
         android:textColor="@android:color/white"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/page_count"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

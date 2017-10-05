@@ -3,5 +3,5 @@
     <string name="search">Search</string>
     <string name="search_for_a_book">Search for a book</string>
     <string name="no_results">No books found</string>
-    <string name="empty_user_imput">Please type in the name of a book</string>
+    <string name="empty_user_input">Please type in the name of a book</string>
 </resources>
