@@ -44,6 +44,11 @@ public class BookAdapter extends ArrayAdapter<Book> {
         //set the author name of the book from the JSON
         authorTextView.setText(bookPosition.getAuthor());
 
+        //find the TextView with the ID @page_count
+        TextView pageCountTextView = (TextView) bookItemView.findViewById(R.id.page_count);
+        //set the number of pages from the JSON
+        pageCountTextView.setText(bookPosition.getPages()+ " pages");
+
         return bookItemView;
     }
 }

@@ -159,9 +159,11 @@ public final class QueryUtils {
                 String authors = authorsArray.toString();
                 //get the preview link
                 String previewLink = volumeInfo.getString("previewLink");
+                //get the number of pages of the book
+                String pageCount = volumeInfo.getString("pageCount");
 
                 //create a new object with the title, authors and the image from the JSON response
-                Book book = new Book(title, authors, previewLink);
+                Book book = new Book(title, authors, previewLink, pageCount);
 
                 //add it to the list of books
                 books.add(book);

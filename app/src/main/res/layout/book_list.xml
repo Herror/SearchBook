@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#424242">
 
-    <ImageView
-        android:id="@+id/book_thumbnail"
+    <LinearLayout
+        android:id="@+id/book_info"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <TextView
         android:id="@+id/title"
@@ -30,10 +30,22 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceSmall"
         android:layout_marginLeft="16dp"
+        android:layout_marginBottom="8dp"
         tools:text="Author"
         android:maxLines="2"
         android:ellipsize="end"
         android:textColor="@android:color/white"/>
 
+    </LinearLayout>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/page_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        tools:text="123"
+        android:textColor="@android:color/white"
+        />
+
+</RelativeLayout>
