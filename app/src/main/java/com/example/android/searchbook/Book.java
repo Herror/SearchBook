@@ -1,5 +1,7 @@
 package com.example.android.searchbook;
 
+import java.util.ArrayList;
+
 /**
  * Created by enach on 9/26/2017.
  */
@@ -10,7 +12,7 @@ public class Book {
     private String mTitle;
 
     //Author of the book
-    private String mAuthor;
+    private ArrayList<String> mAuthor;
 
     //Url of the preview of the book
     private String mUrl;
@@ -23,7 +25,7 @@ public class Book {
      * @param author - The author of the book
      * @param url - The url for the sample book
      */
-    public Book(String title, String author, String url, String pages){
+    public Book(String title, ArrayList<String> author, String url, String pages){
         mTitle = title;
         mAuthor = author;
         mUrl = url;
@@ -35,7 +37,7 @@ public class Book {
         return mTitle;
     }
     //return the author of the book
-    public String getAuthor(){
+    public ArrayList<String> getAuthor(){
         return mAuthor;
     }
     //return the preview Url

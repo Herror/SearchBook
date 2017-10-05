@@ -41,8 +41,21 @@ public class BookAdapter extends ArrayAdapter<Book> {
 
         //find the TextView with the ID @author
         TextView authorTextView = (TextView) bookItemView.findViewById(R.id.author);
-        //set the author name of the book from the JSON
-        authorTextView.setText(bookPosition.getAuthor());
+
+        //Get the Title and set it to a authors TextView
+        ArrayList<String> authorsArray = new ArrayList<String>(bookPosition.getAuthor());
+        StringBuilder authors = new StringBuilder();
+        if (authorsArray.size() == 1) {
+            authors.append(authorsArray.get(0));
+        }
+        if (authorsArray.size() > 1) {
+            authors.append(authorsArray.get(0));
+            for (int i = 1; i < authorsArray.size(); i++) {
+                authors.append(", " + authorsArray.get(i));
+            }
+        }
+
+        authorTextView.setText(authors);
 
         //find the TextView with the ID @page_count
         TextView pageCountTextView = (TextView) bookItemView.findViewById(R.id.page_count);

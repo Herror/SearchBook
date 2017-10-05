@@ -148,6 +148,9 @@ public final class QueryUtils {
             JSONArray itemsArray = root.getJSONArray("items");
             //extract the items array from inside the root JSONObject
             for(int i = 0; i < itemsArray.length(); i++) {
+
+                ArrayList<String> authors = new ArrayList<>();
+
                 //start adding the books
                 JSONObject firstBook = itemsArray.getJSONObject(i);
                 //get the volumeInfo of the book
@@ -155,8 +158,14 @@ public final class QueryUtils {
                 //get the title
                 String title = volumeInfo.getString("title");
                 //get the authors
+                if(volumeInfo.has("authors")){
                 JSONArray authorsArray = volumeInfo.getJSONArray("authors");
-                String authors = authorsArray.toString();
+                    //Extract Author Names
+                    for (int a = 0; a < authorsArray.length(); a++) {
+                        String author = authorsArray.getString(a);
+                        authors.add(author);
+                    }
+                }
                 //get the preview link
                 String previewLink = volumeInfo.getString("previewLink");
                 //get the number of pages of the book
